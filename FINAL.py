@@ -3,9 +3,9 @@ import tkinter
 import os
 from tkinter import messagebox
 from tkinter.filedialog import askopenfilename
+count=0
 
 top=Tk()
-count=0
 
 
 C = Canvas(top, bg="blue", height=500, width=500)
@@ -57,9 +57,11 @@ def Add_Model():
     processor=E5.get()
     if(modelno=='' or ram=='' or im=='' or ds=='' or processor==''):
         print("Details can't be empty!")
+        messagebox.showinfo("Add model", "Details can't be empty!")
         exit()
     f.writelines(modelno.ljust(20)+ram.ljust(20)+im.ljust(20)+ds.ljust(20)+processor.ljust(3)+"\n")
     print("Record added to file!")
+    messagebox.showinfo("Add model", "Record added to file!")
     f.close()
 
 def Delete_Model():
@@ -80,6 +82,7 @@ def Delete_Model():
         print(j)
         if(j[0]!=k): 
              f.writelines(j[0].ljust(20)+j[1].ljust(20)+j[2].ljust(20)+j[3].ljust(20)+j[4].ljust(5)+"\n")
+             messagebox.showinfo("Del model", "Record del in file!")
     f.close()
 
 def Update_Model():
@@ -105,7 +108,9 @@ def Update_Model():
      
         else: 
             f.writelines(j[0].ljust(3)+new_name.ljust(20)+new_price.ljust(20)+new_author.ljust(20)+new_publisher.ljust(5)+"\n")
-    print("Record updated!!")        
+    print("Record updated!!")
+    messagebox.showinfo("Update Model ", "Record updated!!")
+    
     f.close()
     
 def Search_Model():
@@ -133,8 +138,10 @@ def Search_Model():
             break
     if(flag==0):
         print("Record not found!")
+        messagebox.showinfo("search Model ", "Record not found!")
     else:
         print("Record found!")
+        messagebox.showinfo("search Model ", "Record found!")
     f.close()
 
    
